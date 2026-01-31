@@ -33,7 +33,7 @@ st.markdown("""
 # --- SIDEBAR (KİMLİK) ---
 with st.sidebar:
     st.title("Ege Berk Çınar")
-    st.image("https://via.placeholder.com/150", caption="Impact-Focused Youth Organizer")
+    st.image("https://via.placeholder.com/150", caption="Social Entrepreneur & Ecosystem Builder")
     st.markdown("📍 Aydın, Turkey")
     st.markdown("📞 +90 505 093 4509")
     st.markdown("✉️ cinaregeberk00@gmail.com")
@@ -65,7 +65,7 @@ with st.sidebar:
 st.markdown("""
     <div style='text-align: center; padding: 40px 0;'>
         <h1 style='font-size: 48px; margin-bottom: 10px;'>Ege Berk Çınar</h1>
-        <h3 style='color: #3498db; font-weight: normal;'>Impact-Focused Youth Organizer & Founder</h3>
+        <h3 style='color: #3498db; font-weight: normal;'>Social Entrepreneur & Ecosystem Builder</h3>
         <p style='font-size: 20px; font-style: italic; color: #666; margin-top: 20px;'>
         "Dream, Try, Try Again."
         </p>
@@ -340,3 +340,4 @@ st.markdown("""
         <p style='font-size: 14px;'>Last Updated: February 2026</p>
     </div>
     """, unsafe_allow_html=True)
+
