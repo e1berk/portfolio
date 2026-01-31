@@ -67,7 +67,7 @@ st.markdown("""
         <h1 style='font-size: 48px; margin-bottom: 10px;'>Ege Berk Çınar</h1>
         <h3 style='color: #3498db; font-weight: normal;'>Social Entrepreneur & Ecosystem Builder</h3>
         <p style='font-size: 20px; font-style: italic; color: #666; margin-top: 20px;'>
-        "Dream, Try, Try Again."
+        "Systems for Impact. Vision for Change."
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -340,4 +340,5 @@ st.markdown("""
         <p style='font-size: 14px;'>Last Updated: February 2026</p>
     </div>
     """, unsafe_allow_html=True)
+
 
