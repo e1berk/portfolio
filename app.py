@@ -13,17 +13,6 @@ st.markdown("""
     h1, h2, h3 { color: #3498db; }
     .stHeader { background-color: #1a2a3a; }
     
-    /* İndirme Butonları */
-    .stDownloadButton > button {
-        background-color: #f39c12 !important; 
-        color: white !important; 
-        font-weight: bold; 
-        border: none;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .stDownloadButton > button:hover { background-color: #d68910 !important; }
-    
     /* TROIA Analiz Butonu */
     div.stButton > button:first-child {
         background-color: #2E7D32 !important;
@@ -95,8 +84,8 @@ with iac_col1:
     **Format:** Oral Presentation[cite: 2, 3]
     **Paper ID:** IAC-26,B4,9-GTS.5,11,x114716[cite: 3]
     
-    **Abstract:**
-    The large-scale wildfires that occurred in Türkiye in 2021 devastated more than 200,000 hectares of land, caused multiple fatalities, and resulted in economic losses exceeding USD 1 billion. Existing wildfire monitoring systems, including MODIS-based satellite detection and ground-based watchtowers, are inherently reactive, detecting fires only after ignition and failing to utilize the critical 24-72 hour prevention window. This limitation is further exacerbated by the inability of aerial firefighting assets to operate during nighttime, creating a significant operational gap[cite: 2].
+    **Abstract:**[cite: 2]
+    The large-scale wildfires that occurred in Türkiye in 2021 devastated more than 200,000 hectares of land, caused multiple fatalities, and resulted in economic losses exceeding USD 1 billion[cite: 2]. Existing wildfire monitoring systems, including MODIS-based satellite detection and ground-based watchtowers, are inherently reactive, detecting fires only after ignition and failing to utilize the critical 24-72 hour prevention window[cite: 2]. This limitation is further exacerbated by the inability of aerial firefighting assets to operate during nighttime, creating a significant operational gap[cite: 2].
     
     This study presents an AI-powered early warning system designed to predict wildfire risk several days before ignition by integrating multi-source satellite imagery and meteorological data[cite: 2]. Historical wildfire events between 2019 and 2024 were analyzed using multi-temporal Sentinel-2 and Sentinel-3 observations[cite: 2]. Vegetation stress and fuel moisture conditions were quantified using Normalized Difference Vegetation Index (NDVI), Normalized Difference Water Index (NDWI), and Normalized Difference Moisture Index (NDMI), alongside Land Surface Temperature (LST) measurements[cite: 2]. These parameters were integrated with meteorological variables including air temperature, relative humidity, wind speed, and cumulative precipitation[cite: 2]. A Random Forest classifier was trained using 15 features extracted from 30-day pre-fire temporal windows[cite: 2].
     
@@ -106,27 +95,10 @@ with iac_col1:
 with iac_col2:
     st.success("✅ **Accepted for 10-Minute Oral Presentation**[cite: 3]")
     st.info("📅 **Schedule:** 6 October 2026 | 15:00 @ Room Hall 28[cite: 3]")
-    
-    st.markdown("### 📂 Verification & Attachments")
-    st.caption("Verbatim reference files for review committee evaluation:")
-    
-    # 1. Dosya: Kabul Mektubu
-    with open("notification-letter (1).pdf", "rb") as file_letter:
-        st.download_button(
-            label="📄 Download IAC Notification Letter",
-            data=file_letter,
-            file_name="notification-letter (1).pdf",
-            mime="application/pdf"
-        )
-        
-    # 2. Dosya: Genişletilmiş Özet / Brief
-    with open("IAC-26,B4,9-GTS.5,x114716.brief-ext.pdf", "rb") as file_brief:
-        st.download_button(
-            label="📝 Download Technical Brief Document",
-            data=file_brief,
-            file_name="IAC-26,B4,9-GTS.5,x114716.brief-ext.pdf",
-            mime="application/pdf"
-        )
+    st.markdown("### 📋 Verification References")
+    st.caption("• **Official Notification Letter:** Confirmed & Verified (Paper ID: 114716)[cite: 3]")
+    st.caption("• **Technical Session Assignment:** Registered under B4-33rd IAA Symposium[cite: 3]")
+
 st.markdown('</div>', unsafe_allow_html=True)
 st.divider()
 
@@ -185,7 +157,7 @@ with st.container():
     - **Venture Incubation:** Actively engaging in advanced venture building labs, international leadership seminars, and cohort-driven systemic environmental design.
     """)
     
-    st.markdown("<br>", unsafe_allow_html=True) # UI Boşluk
+    st.markdown("<br>", unsafe_allow_html=True)
     
     # Youth Leadership Academy Bölümü
     st.markdown("### President | Youth Leadership Academy")
