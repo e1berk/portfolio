@@ -1,344 +1,232 @@
 import streamlit as st
+import pandas as pd
+import plotly.graph_objects as go
+import time
 
-# Sayfa Ayarları
-st.set_page_config(page_title="Ege Berk Çınar | Portfolio", page_icon="🚀", layout="wide")
+# --- SAYFA YAPILANDIRMASI ---
+st.set_page_config(page_title="Ege Berk Çınar | System Architect & Researcher", page_icon="🚀", layout="wide")
 
-# --- CSS ile Şıklaştırma ---
+# --- ÖZEL CSS TASARIMI ---
 st.markdown("""
     <style>
-    .main { background-color: #f8f9fa; }
+    .main { background-color: #0e1117; color: #ffffff; font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { color: #3498db; }
     .stHeader { background-color: #1a2a3a; }
-    h1, h2, h3 { color: #1a2a3a; }
-    .highlight { color: #3498db; font-weight: bold; }
-    .stButton>button { background-color: #3498db; color: white; border-radius: 5px; }
-    .metric-card {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin: 10px 0;
+    
+    /* İndirme Butonları */
+    .stDownloadButton > button {
+        background-color: #f39c12 !important; 
+        color: white !important; 
+        font-weight: bold; 
+        border: none;
+        width: 100%;
+        margin-bottom: 10px;
     }
-    .achievement-badge {
-        background-color: #3498db;
-        color: white;
-        padding: 5px 15px;
-        border-radius: 20px;
-        display: inline-block;
-        margin: 5px;
-        font-size: 14px;
+    .stDownloadButton > button:hover { background-color: #d68910 !important; }
+    
+    /* TROIA Analiz Butonu */
+    div.stButton > button:first-child {
+        background-color: #2E7D32 !important;
+        color: white !important;
+    }
+    
+    /* IAC Container Vurgusu */
+    .iac-container {
+        border: 2px solid #f39c12;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #1c1c1c;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# --- SIDEBAR (KİMLİK) ---
+# --- SIDEBAR (PROFESYONEL KİMLİK) ---
 with st.sidebar:
     st.title("Ege Berk Çınar")
-    st.image("https://via.placeholder.com/150", caption="Social Entrepreneur & Ecosystem Builder")
-    st.markdown("📍 Aydın, Turkey")
-    st.markdown("📞 +90 505 093 4509")
-    st.markdown("✉️ cinaregeberk00@gmail.com")
-    st.markdown("[🔗 LinkedIn](https://linkedin.com/in/egeberkcinar)")
+    st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", caption="System Architect & Researcher", width=120)
+    
+    # beVisioneers Global Kimlik Rozeti
+    st.success("🏅 **beVisioneers: The Mercedes-Benz Fellow**")
+    
+    st.markdown("📍 **Aydın, Turkey**")
+    st.markdown("📞 **+90 505 093 4509**")
+    st.markdown("✉️ **cinaregeberk00@gmail.com**")
+    st.markdown("[🔗 LinkedIn Profile](https://linkedin.com/in/egeberkcinar)")
     
     st.divider()
     
-    st.subheader("💼 Skills")
+    st.subheader("💼 System Architecture & Skills")
     st.write("""
-    **Strategy & Startups:**
-    • Leadership & Management
-    • Entrepreneurship
-    • R&D & Science
-    • AI & Innovation 
+    **Strategy & Ecosystems:**
+    • R&D & Science Management
+    • AI Implementation Strategy
+    • System & Architecture Design
+    • Venture Building
     
-    **Technical:**
-    • Visiual Storytelling
-    • Prompt Engineering
-    • API Usage
-    • Video Production
-    
-    **Languages:**
-    🇹🇷 Turkish (Native)
-    🇬🇧 English (B2+)
-    🇩🇪 German (A1+)
+    **Technical & Tools:**
+    • Python & Streamlit UI
+    • LLM Prompt Engineering & APIs
+    • Data Visualization (Plotly)
+    • Random Forest Classification
     """)
 
-# --- ANA SAYFA (HEADER) ---
+# --- ANA SAYFA HEADER ---
 st.markdown("""
-    <div style='text-align: center; padding: 40px 0;'>
-        <h1 style='font-size: 48px; margin-bottom: 10px;'>Ege Berk Çınar</h1>
-        <h3 style='color: #3498db; font-weight: normal;'>Social Entrepreneur & Ecosystem Builder</h3>
-        <p style='font-size: 20px; font-style: italic; color: #666; margin-top: 20px;'>
-        "Systems for Impact. Vision for Change."
+    <div style='text-align: center; padding: 20px 0;'>
+        <h1 style='font-size: 45px; margin-bottom: 10px; color: #ffffff;'>Ege Berk Çınar</h1>
+        <h3 style='color: #3498db; font-weight: normal; margin-top: 0;'>Researcher & System Architect</h3>
+        <p style='font-size: 18px; font-style: italic; color: #a1a1a1; margin-top: 15px;'>
+        "Designing structured systems to bridge predictive analytics, aerospace, and environmental sustainability."
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-# --- PROFILE ---
-st.header("🚀 Profile")
-st.write("""
-A visionary leader who goes beyond ideas by uniting people, knowledge, and action to build impact-driven ecosystems. 
-Founded youth-focused communities (Leadership Academy, VisionUp) reaching 250+ students, fostering vision-oriented 
-learning and entrepreneurial initiative. Developing AI-driven ventures that translate education and sustainability 
-challenges into structured systems with measurable social and environmental impact.
-""")
+# --- FLAGSHIP: IAC 2026 & FIREGUARD-1 ---
+st.markdown('<div class="iac-container">', unsafe_allow_html=True)
+st.header("🌍 Flagship Research: IAC 2026 & Space Technologies")
+st.subheader("FIREGUARD-1: AI-BASED PREDICTIVE WILDFIRE EARLY WARNING SYSTEM USING MULTI-SOURCE SATELLITE DATA")
 
-# --- BAŞARILAR ---
-st.markdown("### 🏆 Highlights")
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.markdown('<div class="achievement-badge">🎓 Leadership Academy</div>', unsafe_allow_html=True)
-with col2:
-    st.markdown('<div class="achievement-badge">🥇 TEKNOFEST Finalist</div>', unsafe_allow_html=True)
-with col3:
-    st.markdown('<div class="achievement-badge">🌱 KarbonAT Co-Founder</div>', unsafe_allow_html=True)
-with col4:
-    st.markdown('<div class="achievement-badge">🚀 NeOn Founder</div>', unsafe_allow_html=True)
+iac_col1, iac_col2 = st.columns([2, 1])
+
+with iac_col1:
+    st.markdown("""
+    **Event:** 77th International Astronautical Congress (IAC 2026), Antalya[cite: 3]
+    **Symposium & Session:** 33rd IAA SYMPOSIUM ON SMALL SATELLITE MISSIONS (B4) | Small Satellite Missions Global Technical Session (9-GTS.5)[cite: 2, 3]
+    **Format:** Oral Presentation[cite: 2, 3]
+    **Paper ID:** IAC-26,B4,9-GTS.5,11,x114716[cite: 3]
+    
+    **Abstract:**
+    The large-scale wildfires that occurred in Türkiye in 2021 devastated more than 200,000 hectares of land, caused multiple fatalities, and resulted in economic losses exceeding USD 1 billion. Existing wildfire monitoring systems, including MODIS-based satellite detection and ground-based watchtowers, are inherently reactive, detecting fires only after ignition and failing to utilize the critical 24-72 hour prevention window. This limitation is further exacerbated by the inability of aerial firefighting assets to operate during nighttime, creating a significant operational gap[cite: 2].
+    
+    This study presents an AI-powered early warning system designed to predict wildfire risk several days before ignition by integrating multi-source satellite imagery and meteorological data[cite: 2]. Historical wildfire events between 2019 and 2024 were analyzed using multi-temporal Sentinel-2 and Sentinel-3 observations[cite: 2]. Vegetation stress and fuel moisture conditions were quantified using Normalized Difference Vegetation Index (NDVI), Normalized Difference Water Index (NDWI), and Normalized Difference Moisture Index (NDMI), alongside Land Surface Temperature (LST) measurements[cite: 2]. These parameters were integrated with meteorological variables including air temperature, relative humidity, wind speed, and cumulative precipitation[cite: 2]. A Random Forest classifier was trained using 15 features extracted from 30-day pre-fire temporal windows[cite: 2].
+    
+    The model achieved an overall accuracy of 73%[cite: 2]. Based on these findings, the FireGuard-1 concept proposes a regional 3U CubeSat constellation providing a 90-minute revisit time over high-risk Mediterranean zones[cite: 2]. This approach addresses the temporal limitations of existing Earth observation systems and enables continuous nighttime monitoring[cite: 2]. The system generates explainable, real-time wildfire risk scores on a 0-10 scale, supporting preventive resource allocation before ignition occurs[cite: 2]. This proof-of-concept demonstrates that predictive wildfire monitoring using artificial intelligence and open satellite data is technically feasible and economically viable, offering a scalable framework for fire-prone regions worldwide[cite: 2].
+    """)
+    
+with iac_col2:
+    st.success("✅ **Accepted for 10-Minute Oral Presentation**[cite: 3]")
+    st.info("📅 **Schedule:** 6 October 2026 | 15:00 @ Room Hall 28[cite: 3]")
+    
+    st.markdown("### 📂 Verification & Attachments")
+    st.caption("Verbatim reference files for review committee evaluation:")
+    
+    # 1. Dosya: Kabul Mektubu
+    with open("notification-letter (1).pdf", "rb") as file_letter:
+        st.download_button(
+            label="📄 Download IAC Notification Letter",
+            data=file_letter,
+            file_name="notification-letter (1).pdf",
+            mime="application/pdf"
+        )
+        
+    # 2. Dosya: Genişletilmiş Özet / Brief
+    with open("IAC-26,B4,9-GTS.5,x114716.brief-ext.pdf", "rb") as file_brief:
+        st.download_button(
+            label="📝 Download Technical Brief Document",
+            data=file_brief,
+            file_name="IAC-26,B4,9-GTS.5,x114716.brief-ext.pdf",
+            mime="application/pdf"
+        )
+st.markdown('</div>', unsafe_allow_html=True)
+st.divider()
+
+# --- INTERACTIVE MODULE: TROIA ---
+st.header("🤖 Live System Demo: TROIA (Agri-Tech Deep Engine)")
+st.caption("This module demonstrates the live runtime of TROIA's automated fertilizer optimization matrix using Generative Logic and biochemical gap analytics.")
+
+t_col1, t_col2 = st.columns([1, 2])
+
+with t_col1:
+    st.markdown("#### 📊 Real-Time Telemetry Input")
+    lokasyon = st.text_input("Target Sub-Region / District", "Aydın / Söke", key="troia_loc")
+    mahsul = st.selectbox("Target Agricultural Crop", ["Pamuk", "Mısır", "Buğday", "Domates"], key="troia_crop")
+    
+    st.markdown("**🔬 Soil Biochemical Values**")
+    ph_degeri = st.slider("Soil pH Matrix", 0.0, 14.0, 7.4, 0.1, key="troia_ph")
+    mevcut_n = st.number_input("Current Nitrogen (N) (mg/kg)", min_value=0, max_value=200, value=45, key="troia_n")
+    mevcut_p = st.number_input("Current Phosphorus (P) (mg/kg)", min_value=0, max_value=150, value=20, key="troia_p")
+    mevcut_k = st.number_input("Current Potassium (K) (mg/kg)", min_value=0, max_value=300, value=110, key="troia_k")
+    
+    hidrojel_modu = st.toggle("Integrate Intelligent Hydrogel Network", value=True, key="troia_hydro")
+    analiz_butonu = st.button("Execute Core Gap Analysis & Recipe", key="troia_run")
+
+ideal_degerler = {"Pamuk": {"N": 120, "P": 60, "K": 150}, "Mısır": {"N": 150, "P": 70, "K": 180}, "Buğday": {"N": 90, "P": 40, "K": 100}, "Domates": {"N": 130, "P": 80, "K": 200}}
+
+with t_col2:
+    if analiz_butonu:
+        with st.spinner("TROIA Engine executing multi-agent biochemical gap computation..."):
+            time.sleep(1)
+            
+        gap_n = max(0, ideal_degerler[mahsul]["N"] - mevcut_n)
+        gap_p = max(0, ideal_degerler[mahsul]["P"] - mevcut_p)
+        gap_k = max(0, ideal_degerler[mahsul]["K"] - mevcut_k)
+        
+        fig = go.Figure()
+        fig.add_trace(go.Bar(x=['Nitrogen (N)', 'Phosphorus (P)', 'Potassium (K)'], y=[mevcut_n, mevcut_p, mevcut_k], name='Current Soil Assays', marker_color='#8D6E63'))
+        fig.add_trace(go.Bar(x=['Nitrogen (N)', 'Phosphorus (P)', 'Potassium (K)'], y=[ideal_degerler[mahsul]["N"], ideal_degerler[mahsul]["P"], ideal_degerler[mahsul]["K"]], name='Target Equilibrium', marker_color='#2E7D32'))
+        fig.update_layout(title=f'Biochemical Gap Model for {mahsul}', barmode='group', plot_bgcolor='rgba(0,0,0,0)', font=dict(color="white"), legend=dict(bgcolor='rgba(14,17,23,0.8)'))
+        st.plotly_chart(fig, use_container_width=True)
+        
+        st.success(f"**Custom Matrix:** {gap_n*0.45:.1f}kg Urea, {gap_p*0.3:.1f}kg Phosphate, {gap_k*0.5:.1f}kg Sulfate per acre.")
+    else:
+        st.info("👈 Enter localized field assays on the left panel to execute runtime logic.")
 
 st.divider()
 
-# --- GİRİŞİMCİLİK VE PROJELER ---
-st.header("💡 Entrepreneurial Ventures")
-
-# NeOn
-with st.expander("✨ NeOn | AI-Powered Personalized Learning Platform", expanded=True):
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown("**Founder** | 2025 - Present")
-        st.write("""
-        Building an adaptive learning platform that **transforms how information flows** — personalizing content 
-        delivery based on user curiosity, learning depth, and cognitive pathways.
-        
-        **My Role:**
-        - Product vision and strategy
-        - Brand positioning
-        - MVP development for Gen-E European Finals (Riga)
-        
-        **Status:**
-        - ✅ Selected for GençBizzTech Accelerator
-        """)
-    with col2:
-        st.info("**Status:** Active Development")
-
-# KarbonAT
-with st.expander("🌱 KarbonAT | Sustainability Tech for Tourism", expanded=True):
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown("**Co-Founder** | 2024 - 2025")
-        st.write("""
-        Developed an AI-assisted carbon emission tracking and sustainability management solution for hotels.
-        
-        **My Contributions:**
-        - Integrated AI APIs for data analysis
-        - Designed custom LLM prompt structures for tourism-specific sustainability reports
-        - Led technical development and compliance automation
-        
-        **Major Achievement:**
-        - 🥇 **National Finalist & Top 17** at TEKNOFEST Tourism Technologies Competition
-        - 📊 Advanced from **10,000+ competing projects** nationwide
-        - 🇨🇾 Represented Turkey at international finals in **Cyprus** with exhibition stand
-        """)
-    with col2:
-        st.success("**TEKNOFEST 2024**\nTop 17 Nationally")
-
-st.divider()
-
-# --- LİDERLİK DENEYİMİ ---
-st.header("📣 Leadership Experience")
+# --- GLOBAL FELLOWSHIPS & EXECUTIVE LEADERSHIP ---
+st.header("🌍 Global Fellowships & Executive Leadership")
 
 with st.container():
-    st.markdown("### President | Leadership Academy")
-    st.markdown("*Student-led leadership, entrepreneurship & 21st-century skills initiative* | **2022 - 2024**")
-    st.caption("(Successfully operated school-wide for two academic years until school closure in 2024)")
+    # beVisioneers: Mercedes-Benz Fellowship Bölümü
+    st.markdown("### beVisioneers: The Mercedes-Benz Fellowship")
+    st.markdown("*Global Innovator & Fellow* | **2024 - Present**")
+    st.write("""
+    - **Global Selection:** Appointed as a fellow within the Mercedes-Benz supported beVisioneers sustainability intensive, focusing on scalable ecological frameworks.
+    - **Venture Incubation:** Actively engaging in advanced venture building labs, international leadership seminars, and cohort-driven systemic environmental design.
+    """)
     
-    col1, col2 = st.columns(2)
+    st.markdown("<br>", unsafe_allow_html=True) # UI Boşluk
     
-    with col1:
-        st.markdown("#### 🎯 Core Responsibilities")
+    # Youth Leadership Academy Bölümü
+    st.markdown("### President | Youth Leadership Academy")
+    st.markdown("*High-impact systemic initiative resolving regional career and innovation literacy gaps* | **2022 - 2024**")
+    
+    l_col1, l_col2 = st.columns(2)
+    with l_col1:
         st.write("""
-        - **Led as President** of a student-run Leadership Academy addressing the absence of 
-          entrepreneurship and career literacy across the entire high school (≈250 students)
-        
-        - **Built and managed** a 9-member core team across specialized departments 
-          (Events, Content, Outreach, Operations, Media)
-        
-        - **Designed and delivered** peer-to-peer workshops on 21st-century skills 
-          (communication, entrepreneurship, presentation, leadership)
-        
-        - **Organized 7 career talks** with professionals from diverse industries to support 
-          informed career decision-making
+        - **Executive Governance:** Founded and scaled a comprehensive leadership infrastructure targeting regional ecosystem fragmentation, directly managing onboarding and curricula for **250+ students**.
+        - **Cross-Functional Team Building:** Formed, trained, and orchestrated a high-performing **9-member executive core board** split across tactical operational nodes.
         """)
-    
-    with col2:
-        st.markdown("#### 🌟 Key Initiatives")
+    with l_col2:
         st.write("""
-        **Flagship Events:**
-        - Women's Day Business Summit (8 executive speakers)
-        - On-site professional observation visits
-        - Career guidance sessions
-        
-        **Social Impact Projects:**
-        - Book donation campaigns
-        - Winter aid for low-income families
-        - Animal welfare initiatives
-        
-        **Media & Operations:**
-        - Managed Academy's Instagram presence
-        - Ensured sustained student engagement
-        - Coordinated logistics and stakeholder communication
+        - **Corporate Summits:** Structured and executed the *Women's Day Business Summit*, securing partnerships with **8 corporate executive speakers** to align academic tracks with industrial needs.
+        - **Systemic Impact:** Drove a measurable cultural transition across the student body, shifting institutional focus from passive consumption to agile, milestone-driven execution.
         """)
-    
-    st.info("**Impact:** Contributed to a cultural shift from passive participation to initiative-driven, student-led action across the school community.")
 
 st.divider()
 
-# --- ARAŞTIRMA VE İNOVASYON ---
-st.header("🧪 Innovation & Research")
+# --- ARCHIVE: PREVIOUS ITERATIONS ---
+st.header("🗄️ System Archives & Previous Iterations")
+st.caption("Past experiments, technical milestones, and operational pilots preserved for architectural continuity.")
 
-tab1, tab2, tab3 = st.tabs(["🌾 GübreAI (Agri-Tech)", "🔬 Chiral Molecule Detection", "📚 TÜBİTAK Research"])
+with st.expander("🌱 KarbonAT | Predictive Carbon Analytics (TEKNOFEST Finalist Top 17)", expanded=False):
+    st.write("Engineered an AI-assisted carbon accounting and automated compliance reporting SaaS platform tailored for the commercial hospitality industry. Reached national top 17 among 10,000+ projects and presented at Cyprus.")
 
-with tab1:
-    st.markdown("### Project Lead | GübreAI")
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        st.write("""
-        Developing an AI-driven system for crop-specific fertilizer formulation using hydrogel technology 
-        with a focus on **planet-positive sustainability**.
-        
-        **Technical Focus:**
-        - Designing agent-based workflows to optimize fertilizer selection
-        - Building supplier decision-making algorithms for farmers
-        - Integrating sustainable agriculture practices with AI
-        
-        **Application:**
-        - 🌍 Applied to Visioneers accelerator program
-        """)
-    with col2:
-        st.warning("Status: In Development")
-        st.write("**Focus:**")
-        st.write("• Sustainability")
-        st.write("• AI Agents")
-        st.write("• Hydrogel Tech")
+with st.expander("✨ NeOn | AI-Powered Personalized Cognitive Platform (Gen-E European Finalist Pilot)", expanded=False):
+    st.write("Developed an adaptive learning layer MVP to optimize cognitive pathways based on user intent. Selected for GençBizzTech Accelerator. (Status: Deprecated/Archived to focus on deep-tech research).")
 
-with tab2:
-    st.markdown("### Research Assistant | Chiral Molecule Detection System")
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        st.write("""
-        Designing a low-cost experimental system to detect **chiral molecules** in high school laboratory settings.
-        
-        **Why Chirality Matters:**
-        Chirality is fundamental to understanding molecular interactions in chemistry, biology, and pharmacology. 
-        Many biological molecules (amino acids, sugars) are chiral, and detecting chirality is essential for 
-        advanced chemistry education—but current equipment is prohibitively expensive for most schools.
-        
-        **Mission:**
-        Democratize access to advanced chemistry experimentation through scalable, cost-effective design, 
-        enabling hands-on learning about molecular structure and optical activity.
-        """)
-    with col2:
-        st.warning("Status: In Development")
-        st.write("**Goal:**")
-        st.write("• Accessible Science")
-        st.write("• Low-Cost Design")
+with st.expander("🔬 Accessible Chiral Molecule Detection System", expanded=False):
+    st.write("Designed a low-cost optical polarization array allowing high school laboratory environments to explicitly assay molecular chirality, democratizing access to spatial chemistry.")
 
-with tab3:
-    st.markdown("### TÜBİTAK 2204-A Research Projects")
-    st.write("""
-    Completed two research projects under Turkey's national scientific research program:
-    
-    1. **Eski Türk Kültür İnancı Şamanizmin Aktif Türk Kültürüne Etkileri**
-       - Historical and anthropological research on shamanism's impact on modern Turkish culture
-    
-    2. **Aloe Vera Bazlı Hidrojel Üretimi**
-       - Biochemical experimentation for sustainable hydrogel synthesis
-    """)
-
-st.divider()
-
-# --- EĞİTİM VE ÖDÜLLER ---
-col1, col2 = st.columns(2)
-
-with col1:
-    st.header("🎓 Education")
-    st.markdown("### Ortaklar Science High School")
-    st.markdown("*Aydın, Turkey* | **Expected June 2026**")
-    st.write("")
-    st.metric("GPA", "98.5 / 100", "≈ 3.95 / 4.00")
-    st.write("")
-    st.write("**Honors:**")
-    st.write("🏅 Certificate of Honor (4×)")
-    st.write("")
-    st.write("**Selected Coursework:**")
-    st.write("• Advanced Mathematics")
-    st.write("• Physics")
-    st.write("• Scientific Research Methods")
-
-with col2:
-    st.header("🏆 Awards & Competitions")
-    
-    st.markdown("#### 🥇 TEKNOFEST Tourism Technologies 2024")
-    st.success("""
-    **National Finalist & Top 17**
-    - Advanced from 10,000+ projects nationwide
-    - Represented Turkey at Cyprus finals
-    - Exhibited solution with dedicated stand
-    """)
-    
-    st.markdown("#### 🧪 Science & Math Olympiads")
-    st.info("""
-    **National Finalists:**
-    - Tales Science Olympiad (8th Place Nationally)
-    - Tales Math Olympiad
-    - URFODU (National Finalist)
-    - Chemistry, Biology, Mathematics, Geography Olympiads
-    """)
-    
-    st.markdown("#### 🎤 Model United Nations")
-    st.write("**Best Delegate & Outstanding Delegate** awards")
-    st.write("[View MUN Certificates →](#)")
-
-st.divider()
-
-# --- EK AKTİVİTELER ---
-st.header("🌟 Additional Initiatives")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("### VisionUp (Founder)")
-    st.write("""
-    Youth-focused community initiative aimed at building a **young entrepreneurial ecosystem in Aydın**.
-    
-    **Mission:**
-    Enable young people in our region to adopt 21st-century skills—entrepreneurship, innovation, 
-    leadership—through active practice and development.
-    
-    **Goals:**
-    - Organize competitions and innovation challenges
-    - Foster entrepreneurial culture among youth
-    - Create a sustainable young entrepreneurial ecosystem in Aydın
-    
-    **Status:** Currently on hold (2025)
-    """)
-
-with col2:
-    st.markdown("### Community Impact")
-    st.write("""
-    **Through Leadership Academy:**
-    - 📚 Book donation campaigns
-    - ❄️ Winter aid for low-income families
-    - 🐾 Animal welfare initiatives
-    - 🏭 Industry observation visits
-    - 👥 Professional networking events
-    """)
+with st.expander("📚 Formal Research: TÜBİTAK 2204-A Initiatives", expanded=False):
+    st.write("1. Socio-Anthropological Assay on Shamanism's impact on modern culture. \n2. Biochemical Synthesis of Aloe Vera based hydrogels for agricultural water retention.")
 
 st.divider()
 
 # --- FOOTER ---
 st.markdown("""
-    <div style='text-align: center; padding: 30px 0; color: #666;'>
-        <p>© 2026 Ege Berk Çınar | Built with Streamlit 🚀</p>
-        <p style='font-size: 14px;'>Last Updated: February 2026</p>
+    <div style='text-align: center; padding: 20px 0; color: #666; font-size: 14px;'>
+        <p>© 2026 Ege Berk Çınar | Engineered and Maintained with Streamlit Engine 🚀</p>
+        <p>System State: Production Verified | Last Structural Upgrade: May 2026</p>
     </div>
     """, unsafe_allow_html=True)
-
-
